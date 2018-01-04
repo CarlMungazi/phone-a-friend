@@ -1,0 +1,17 @@
+{
+  "name": "classes_and_delegation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack index.js bin/app.js --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mithril": "^1.1.6",
+    "webpack": "^3.10.0"
+  }
+}
