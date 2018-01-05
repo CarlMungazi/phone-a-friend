@@ -31,6 +31,15 @@ module.exports = {
         disabled: vnode.state.inputDisabled,
         class: vnode.state.inputDisabled ? 'b--black-20' : 'b--light-blue'
       }),
+      m("label.f7.b.db.mb2", "Number"),
+      m("input.input[type=text][placeholder=Number].f4.input-reset.bbo.b--black-20.pa2.mb2.dib.w-75.mr1", {
+        oninput: m.withAttr("value", (value) => {
+          Contact.current.number = value
+        }),
+        value: Contact.current.number,
+        disabled: vnode.state.inputDisabled,
+        class: vnode.state.inputDisabled ? 'b--black-20' : 'b--light-blue'
+      }),
       m('div',
         m("button[type=button].f6.dim.br2.ba.ph3.pv2.mb2.dib.mid-gray.mt3.mr2", {
           onclick: function (e) {
@@ -45,6 +54,7 @@ module.exports = {
           onclick: function (e) {
             e.preventDefault()
             vnode.state.inputDisabled = !vnode.state.inputDisabled
+            Contact.save()
           }
         }, "Save"),
       )
