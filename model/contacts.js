@@ -9,7 +9,6 @@ const Contact = {
         withCredentials: true,
       })
       .then(res => {
-        console.log(res)
         Contact.list = res.data
         Contact.list.forEach(contact => {
           if (contact.number) {
@@ -53,7 +52,6 @@ const Contact = {
     })
   },
   save: function () {
-    console.log(Contact.current)
     return m.request({
       method: "PUT",
       url: `https://rem-rest-api.herokuapp.com/api/users/${Contact.current.id}`,
