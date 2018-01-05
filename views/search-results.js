@@ -12,13 +12,16 @@ module.exports = {
               m("circle[fill='#ccc'][r='32'][cx='32'][cy='32']"),
               m("text[x='32'][y='32'][text-anchor='middle'][stroke='#000'][dy='.3em']", initial),
             ),
-            m('a.link', {
+            m('a.link.pl3.flex-auto', {
                 href: `/edit/${contact.id}`, 
                 oncreate: m.route.link
               },
-              m('div.pl3.flex-auto',
+              m('div',
                 m('span.f4.db.black-70', `${contact.firstName} ${contact.lastName}`)
               )
+            ),
+            m('div',
+              m('a[href="tel:"].f6.link.blue', contact.number)
             )
           )
         })
