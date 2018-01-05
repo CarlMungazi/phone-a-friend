@@ -11,7 +11,6 @@ function lowerFirst (str) {
 module.exports = {
 	oninit: function(vnode) {
     vnode.state.query = ''
-    vnode.state.checkedElIdx = ''
     vnode.state.sort = {
       opts: ['First Name', 'Last Name'],
       sortBy: ''
@@ -46,41 +45,29 @@ module.exports = {
           vnode.state.sort.opts.map(function(el) {
             let inputName = el.trim()
             let elIdx = vnode.state.sort.opts.indexOf(el)
-            return m('span.f6', el,
-              m(`input[type=checkbox][name=${inputName}].mr2.ml2`, {
-                  onchange: function () {
-                    if (vnode.state.checkedElIdx === elIdx) {
-                      vnode.state.checkedElIdx = ''
-                      vnode.state.sort.sortBy = ''
-                    } else { 
-                      vnode.state.checkedElIdx = elIdx
-                      vnode.state.sort.sortBy = inputName.replace(/\s+/g, '')
-                    }
-                  },
-                  checked: vnode.state.checkedElIdx === elIdx
-                }
-              )
+            return m('button.f6.dim.br-pill.ba.ph3.pv2.mb2.dib.mid-gray.mr2', {
+              onclick: function () {
+                vnode.state.sort.sortBy = inputName.replace(/\s+/g, '')
+
+                let sortParam = lowerFirst(vnode.state.sort.sortBy)
+
+                Contact.list.sort( (a, b) => {
+                  let nameA = a[sortParam].toUpperCase()
+                  let nameB = b[sortParam].toUpperCase()
+                  if (nameA < nameB) {
+                    return -1;
+                  }
+                  if (nameA > nameB) {
+                    return 1;
+                  }
+
+                  return 0;
+                })
+              },
+            }, el
            )
           })
-        ),
-        m('button.f6.dim.br2.ba.ph3.pv2.mb2.dib.mid-gray', {
-          onclick: (e) => {
-            let sortParam = lowerFirst(vnode.state.sort.sortBy)
-
-            Contact.list.sort( (a, b) => {
-              let nameA = a[sortParam].toUpperCase()
-              let nameB = b[sortParam].toUpperCase()
-              if (nameA < nameB) {
-                return -1;
-              }
-              if (nameA > nameB) {
-                return 1;
-              }
-
-              return 0;
-            })
-          }
-        }, "Sort")
+        )
       )
 		])
 	}
