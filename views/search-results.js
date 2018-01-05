@@ -4,7 +4,7 @@ const Contact = require('../model/contacts')
 module.exports = {
   view: function() {
       return m('ul.list.pl0.mt0.measure.center',
-        Contact.list.map(contact => {
+        Contact.searchResults.map(contact => {
           return m('li.flex.items-center.lh-copy.pa3.ph0-l.bb.b--black-10',
             m('a', {
                 href: `/edit/${contact.id}`, 

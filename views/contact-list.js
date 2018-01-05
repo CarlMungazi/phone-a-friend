@@ -12,8 +12,8 @@ module.exports = {
               oncreate: m.route.link
             },
             m('div.pl3.flex-auto',
-              m('span.f6.db.black-70', `${contact.firstName}`),
-              m('span.f6.db.black-70', `${contact.lastName}`)
+              m('span.db.black-70', `${contact.firstName}`),
+              m('span.db.black-70', `${contact.lastName}`)
             )
           )
         )

@@ -7,7 +7,7 @@ module.exports = {
           m("nav.measure.center.mb2", [
               m("a[href='/list']", {
                 oncreate: m.route.link
-              }, "Users")
+              }, "View Contacts")
           ]),
           m(SearchBar),
           m("article.mw5.mw6-ns.center.pt4", vnode.children)
