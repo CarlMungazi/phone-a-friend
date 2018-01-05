@@ -9,15 +9,23 @@ const Contact = {
         withCredentials: true,
       })
       .then(res => {
+        console.log(res)
         Contact.list = res.data
         Contact.list.forEach(contact => {
-          Object.defineProperty(contact, 'number', {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: '+442032960159'
-          })
+          if (contact.number) {
+            // do nothing
+          } else {
+            Object.defineProperty(contact, 'number', {
+              enumerable: true,
+              configurable: true,
+              writable: true,
+              value: '+442032960159'
+            })
+          }
         })
+      })
+      .catch(err => {
+        console.error(err)
       })
     },
   current: {},
@@ -29,15 +37,23 @@ const Contact = {
     })
     .then(res => {
       Contact.current = res
-      Object.defineProperty(Contact.current, 'number', {
-        enumerable: true,
-        configurable: true,
-        writable: true,
-        value: '+442032960159'
-      })
+      if (Contact.current.number) {
+        // do nothing
+      } else {
+        Object.defineProperty(Contact.current, 'number', {
+          enumerable: true,
+          configurable: true,
+          writable: true,
+          value: '+442032960159'
+        })
+      }
+    })
+    .catch(err => {
+      console.error(err)
     })
   },
   save: function () {
+    console.log(Contact.current)
     return m.request({
       method: "PUT",
       url: `https://rem-rest-api.herokuapp.com/api/users/${Contact.current.id}`,
@@ -46,6 +62,9 @@ const Contact = {
     })
     .then(res => {
       console.log(res)
+    })
+    .catch(err => {
+      console.error(err)
     })
   },
   searchResults: []
