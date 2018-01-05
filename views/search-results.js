@@ -16,9 +16,7 @@ module.exports = {
                 href: `/edit/${contact.id}`, 
                 oncreate: m.route.link
               },
-              m('div',
-                m('span.f4.db.black-70', `${contact.firstName} ${contact.lastName}`)
-              )
+              m('span.f4.db.black-70', `${contact.firstName} ${contact.lastName}`)
             ),
             m('div',
               m('a[href="tel:"].f6.link.blue', contact.number)

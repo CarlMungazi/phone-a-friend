@@ -10,7 +10,7 @@ module.exports = {
               }, "View Contacts")
           ]),
           m(SearchBar),
-          m("article.mw5.mw6-ns.center.pt4", vnode.children)
+          m("article.center.pt4", vnode.children)
       ])
   }
 }
