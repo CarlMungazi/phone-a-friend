@@ -14,3 +14,8 @@ Using mithril and tachyons for that rapid prototyping goodness. Webpack for some
 2. `npm install`
 3. `npm start`
 4. Open index.html
+
+### Roadmap
+
+1. Add tests
+2. Add user creation and deletion features
