@@ -17,7 +17,10 @@ Using mithril and tachyons for that rapid prototyping goodness. Webpack for some
 
 ### Roadmap
 
-1. Optimisation: ship with Tachyons instead of pulling via unpkg.com
-2. Feature: edit and save contact
-3. Design: review markup and css
-4. TDD: Add unit tests
+1. Design: review markup and css
+2. TDD: Add unit tests
+3. Performance: Investigate split second lag for individual contact load
+4. UI: Remove filter option on individual contact view
+5. UI: Add 'no results found' message when user search returns nothing
+6. Refactor: Refactor contact-edit component to make it more modular
+6. Backend: Host own version of REM API on Heroku and edit contact data model
